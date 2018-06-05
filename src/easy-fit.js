@@ -2,14 +2,14 @@ import { getArrayBuffer, calculateCRC, readRecord } from './binary';
 
 export default class EasyFit {
   constructor(options = {}) {
-    this.options = {
-      force: options.force || true,
-      speedUnit: options.speedUnit || 'm/s',
-      lengthUnit: options.lengthUnit || 'm',
-      temperatureUnit: options.temperatureUnit || 'celsius',
-      elapsedRecordField: options.elapsedRecordField || false,
-      mode: options.mode || 'list',
-    };
+    this.options = Object.assign({}, {
+      force: true,
+      speedUnit: 'm/s',
+      lengthUnit: 'm',
+      temperatureUnit: 'celsius',
+      elapsedRecordField: false,
+      mode: 'list',
+    }, options);
   }
 
   parse(content, callback) {
